@@ -5,17 +5,21 @@ using UnityEngine;
 public class BallControler : MonoBehaviour
 {
 
-    public enum Material 
+    public enum MaterialType
     {
     Iron,
     Plastic,
     Rubber
     }
-    public Material material;
+    public MaterialType material;
 
-    public PhysicMaterial iron;
-    public PhysicMaterial plastic;
-    public PhysicMaterial rubber;
+    public PhysicMaterial ironPhy;
+    public PhysicMaterial plasticPhy;
+    public PhysicMaterial rubberPhy;
+
+    public Material ironMat;
+    public Material plasticMat;
+    public Material rubberMat;
 
     public float massIron;
     public float massPlastic;
@@ -23,11 +27,13 @@ public class BallControler : MonoBehaviour
 
     private Rigidbody rb;
 
+
+    public float force;
     
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        material = Material.Rubber;
+        material = MaterialType.Rubber;
     }
 
     // Update is called once per frame
@@ -38,11 +44,23 @@ public class BallControler : MonoBehaviour
 
    public void MoveLeft()
     {
-        rb.velocity = new Vector3(-2f,rb.velocity.y,rb.velocity.z);
+        rb.AddForce(-force , 0f,0f,ForceMode.Impulse);
     }
     public void MoveRight()
     {
-        rb.velocity = new Vector3(2f, rb.velocity.y, rb.velocity.z);
+        rb.AddForce(force , 0f, 0f, ForceMode.Impulse);
+    }
+    public void MoveForward()
+    {
+        rb.AddForce(0f, 0f, force, ForceMode.Impulse);
+    }
+    public void MoveBackward()
+    {
+        rb.AddForce(0f, 0f,-force, ForceMode.Impulse);
+    }
+    public void Jump() 
+    {
+        rb.AddForce(0f, force , 0f,ForceMode.Impulse);
     }
 
 }
