@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.UIElements;
+using UnityEngine.UI;
 
 public class BallControler : MonoBehaviour
 {
@@ -46,6 +46,7 @@ public class BallControler : MonoBehaviour
     public Transform cannonHead;
     public GameObject btnControlGroup;
 
+    public Dropdown dropdownMaterial;
 
     void Start()
     {
@@ -59,6 +60,8 @@ public class BallControler : MonoBehaviour
         colliderS.material = ironPhy;
         mesh.material = ironMat;
         rb.mass = massIron;
+
+        dropdownMaterial.onValueChanged.AddListener(delegate { OnValueChangedHandler(dropdownMaterial);  });
     }
 
     // Update is called once per frame
@@ -103,11 +106,11 @@ public class BallControler : MonoBehaviour
         }
     }
 
-    public void OnValueChanged(int val) 
+    public void OnValueChangedHandler(Dropdown sender) 
     {
-        if (val == 0) materialType = MaterialType.Iron;
-        else if (val == 1) materialType = MaterialType.Plastic;
-        else if (val == 2) materialType = MaterialType.Rubber;
+        if (sender.value == 0) materialType = MaterialType.Iron;
+        else if (sender.value == 1) materialType = MaterialType.Plastic;
+        else if (sender.value == 2) materialType = MaterialType.Rubber;
 
 
         if (materialType == MaterialType.Iron)
