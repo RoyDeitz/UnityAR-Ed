@@ -43,8 +43,9 @@ public class BallControler : MonoBehaviour
     public float force;
 
     public Transform initialPosition;
-    public Transform cannonHead;
+    public GameObject cannonHead;
     public GameObject btnControlGroup;
+    public GameObject shootButton;
 
     public Dropdown dropdownMaterial;
 
@@ -53,6 +54,7 @@ public class BallControler : MonoBehaviour
 
     public Transform cannon;
 
+    //bool isShootable;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -69,12 +71,58 @@ public class BallControler : MonoBehaviour
         dropdownMaterial.onValueChanged.AddListener(delegate { OnValueChangedHandler(dropdownMaterial);  });
         forceSlider.onValueChanged.AddListener(delegate { OnForceChanged(forceSlider); });
         angleSlider.onValueChanged.AddListener(delegate { OnAngleChanged(angleSlider); });
+       // isShootable = false;
     }
+/*
+    private void FixedUpdate()
+    {
+        if (isShootable)
+        {
+           
+                rb.useGravity = true;
+                btnControlGroup.SetActive(false);
+                forceSlider.enabled = false;
+                angleSlider.enabled = false;
+                shootButton.SetActive(false);
 
+
+            rb.AddForce(0f,0f,900f, ForceMode.Impulse);
+            isShootable = false;
+
+        }
+    }*/
     // Update is called once per frame
     void Update()
     {
-       
+        if (ballState == BallState.CannonSet)
+        {
+            rb.velocity = Vector3.zero;
+            rb.useGravity = false;
+            transform.position = cannonHead.transform.position;
+            btnControlGroup.SetActive(false);
+            angleSlider.enabled = true;
+            forceSlider.enabled = true;
+            shootButton.SetActive(true);
+        }
+        else if (ballState == BallState.BallControl)
+        {
+            rb.useGravity = true;
+
+            btnControlGroup.SetActive(true);
+            
+            forceSlider.enabled = true;
+            shootButton.SetActive(false);
+        }
+        else if(ballState == BallState.FreeFall)
+        {
+            rb.useGravity = true;
+            btnControlGroup.SetActive(false);
+            forceSlider.enabled = false;
+            angleSlider.enabled = false;
+            shootButton.SetActive(false);
+
+
+        }
 
     }
 
@@ -105,11 +153,12 @@ public class BallControler : MonoBehaviour
             rb.velocity = Vector3.zero;
             this.transform.rotation = initialPosition.rotation;
             this.transform.position = initialPosition.position;
+            ballState = BallState.BallControl;
         }
 
         if (other.tag == "Cannon") 
         {
-        
+            ballState = BallState.CannonSet;
         }
     }
 
@@ -148,5 +197,14 @@ public class BallControler : MonoBehaviour
     public void OnAngleChanged(Slider slider) 
     {
         cannon.localRotation = Quaternion.Euler(-slider.value,cannon.localRotation.y,cannon.localRotation.z);
+    }
+
+    public void Shoot() 
+    {
+        ballState = BallState.FreeFall;
+        Vector3 direction = cannonHead.transform.position - cannon.position;
+        //isShootable = true;
+        rb.AddForce(direction*force*.4f,ForceMode.Impulse);
+       
     }
 }
