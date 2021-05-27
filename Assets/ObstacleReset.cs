@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObstacleReset : MonoBehaviour
 {
+    public AudioSource winSound;
+    public AudioClip winClip;
     public Transform initialPos;
     bool TargetHit;
     void Start()
@@ -46,7 +48,8 @@ public class ObstacleReset : MonoBehaviour
         if (TargetHit) 
         {
             //winFeedBack/TheoryFeedback
-            Debug.Log("YouW!!!!!!in");
+            winSound.PlayOneShot(winClip);
+            //Debug.Log("YouW!!!!!!in");
             ResetPos();
             StopAllCoroutines();
         }
