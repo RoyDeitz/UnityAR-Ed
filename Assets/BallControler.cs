@@ -48,6 +48,11 @@ public class BallControler : MonoBehaviour
 
     public Dropdown dropdownMaterial;
 
+    public Slider forceSlider;
+    public Slider angleSlider;
+
+    public Transform cannon;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -62,6 +67,8 @@ public class BallControler : MonoBehaviour
         rb.mass = massIron;
 
         dropdownMaterial.onValueChanged.AddListener(delegate { OnValueChangedHandler(dropdownMaterial);  });
+        forceSlider.onValueChanged.AddListener(delegate { OnForceChanged(forceSlider); });
+        angleSlider.onValueChanged.AddListener(delegate { OnAngleChanged(angleSlider); });
     }
 
     // Update is called once per frame
@@ -91,7 +98,7 @@ public class BallControler : MonoBehaviour
     {
         rb.AddForce(0f, force , 0f,ForceMode.Impulse);
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Respawner") 
         {
@@ -131,5 +138,15 @@ public class BallControler : MonoBehaviour
             mesh.material = rubberMat;
             rb.mass = massRubber;
         }
+    }
+
+    public void OnForceChanged(Slider slider) 
+    {
+        force = slider.value;
+    }
+
+    public void OnAngleChanged(Slider slider) 
+    {
+        cannon.localRotation = Quaternion.Euler(-slider.value,cannon.localRotation.y,cannon.localRotation.z);
     }
 }
