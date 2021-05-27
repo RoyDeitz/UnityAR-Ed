@@ -29,6 +29,8 @@ public class BallControler : MonoBehaviour
 
 
     public float force;
+
+    public Transform initialPosition;
     
     void Start()
     {
@@ -62,5 +64,13 @@ public class BallControler : MonoBehaviour
     {
         rb.AddForce(0f, force , 0f,ForceMode.Impulse);
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Respawner") 
+        {
+            this.transform.position = initialPosition.position;
+            this.transform.rotation = initialPosition.rotation;
+            rb.velocity = Vector3.zero;
+        }
+    }
 }
