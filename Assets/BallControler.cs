@@ -57,6 +57,7 @@ public class BallControler : MonoBehaviour
     //bool isShootable;
     void Start()
     {
+        transform.position = initialPosition.position;
         rb = GetComponent<Rigidbody>();
         materialType = MaterialType.Rubber;
         ballState = BallState.BallControl;
@@ -150,10 +151,7 @@ public class BallControler : MonoBehaviour
     {
         if (other.tag == "Respawner") 
         {
-            rb.velocity = Vector3.zero;
-            this.transform.rotation = initialPosition.rotation;
-            this.transform.position = initialPosition.position;
-            ballState = BallState.BallControl;
+            ResetPlayer();
         }
 
         if (other.tag == "Cannon") 
@@ -204,7 +202,15 @@ public class BallControler : MonoBehaviour
         ballState = BallState.FreeFall;
         Vector3 direction = cannonHead.transform.position - cannon.position;
         //isShootable = true;
-        rb.AddForce(direction*force*.4f,ForceMode.Impulse);
+        rb.AddForce(direction*force*.01f,ForceMode.Impulse);
        
+    }
+
+    public void ResetPlayer() 
+    {
+        rb.velocity = Vector3.zero;
+        this.transform.rotation = initialPosition.rotation;
+        this.transform.position = initialPosition.position;
+        ballState = BallState.BallControl;
     }
 }
