@@ -68,9 +68,9 @@ public class BallControler : MonoBehaviour
     {
         if (other.tag == "Respawner") 
         {
-            this.transform.position = initialPosition.position;
-            this.transform.rotation = initialPosition.rotation;
             rb.velocity = Vector3.zero;
+            this.transform.rotation = initialPosition.rotation;
+            this.transform.position = initialPosition.position;
         }
     }
 }
