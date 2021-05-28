@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="WIN_20210525_20_10_16_Pro" size="300.000000 629.596436" />
+    <ImageTarget name="pencil" size="200.000000 419.730927" />
+    <ImageTarget name="WIN_20210525_20_10_16_Pro" size="300.000000 400.000000" />
   </Tracking>
 </QCARConfig>
