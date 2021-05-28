@@ -401,35 +401,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 61714882}
   m_CullTransparentMesh: 1
---- !u!21 &84327038
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'WIN_20210525_20_10_16_ProMaterial
-
-    58548'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 5bafa1559e47442c9aa014cbb9358819, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &95276503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1790,7 +1761,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 84327038}
+  - {fileID: 475445466}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1965,6 +1936,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 457957493}
   m_CullTransparentMesh: 1
+--- !u!21 &475445466
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'WIN_20210525_20_10_16_ProMaterial
+
+    61996'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 5bafa1559e47442c9aa014cbb9358819, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &591439371
 GameObject:
   m_ObjectHideFlags: 0
@@ -2007,8 +2007,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4460.7725, y: 1932.1829, z: 3162.5303}
-  m_Center: {x: -106.372925, y: -869.734, z: -17.334229}
+  m_Size: {x: 4460.7725, y: 10346.198, z: 7479.368}
+  m_Center: {x: -106.37305, y: -253.70038, z: 2246.6006}
 --- !u!1 &618107192
 GameObject:
   m_ObjectHideFlags: 0
@@ -3474,7 +3474,7 @@ MonoBehaviour:
   plasticPhy: {fileID: 13400000, guid: 94019cbd30cb8e141b23190c8e59622c, type: 2}
   rubberPhy: {fileID: 13400000, guid: de3fc98206e966342968baaca76e7aef, type: 2}
   ironMat: {fileID: 2100000, guid: 9b79077b59fe92e4291521a9bb853720, type: 2}
-  plasticMat: {fileID: 2100000, guid: 8f725839a8aa3a44d9af1cb65decc592, type: 2}
+  plasticMat: {fileID: 2100000, guid: 7859d1fae09ee6e4e9ce68df044a3801, type: 2}
   rubberMat: {fileID: 2100000, guid: 3fb6be64a7ad9af409fcc6d5ad6a0f3f, type: 2}
   massIron: 4
   massPlastic: 0.5
@@ -4583,12 +4583,12 @@ MonoBehaviour:
   ironPhy: {fileID: 13400000, guid: afda20d7213457c47bddfb4c1e29da6e, type: 2}
   plasticPhy: {fileID: 13400000, guid: 94019cbd30cb8e141b23190c8e59622c, type: 2}
   woodPhy: {fileID: 13400000, guid: 2c875532cccb5bf4f9e5672660d29c56, type: 2}
-  ironMat: {fileID: 2100000, guid: 9b79077b59fe92e4291521a9bb853720, type: 2}
-  plasticMat: {fileID: 2100000, guid: 8f725839a8aa3a44d9af1cb65decc592, type: 2}
+  ironMat: {fileID: 2100000, guid: 571ca6080ac8b8942b2be3ce8204eedd, type: 2}
+  plasticMat: {fileID: 2100000, guid: 7859d1fae09ee6e4e9ce68df044a3801, type: 2}
   woodMat: {fileID: 2100000, guid: b00045d5b284de34ea2e777e68ea2dfe, type: 2}
-  massIron: 6
-  massPlastic: 2
-  massWood: 3
+  massIron: 12
+  massPlastic: 1.5
+  massWood: 3.5
   dropdownMaterial: {fileID: 1289759781}
   materialType: 0
 --- !u!54 &1360964352
@@ -5224,7 +5224,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607072553}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: 0, z: 3}
+  m_LocalPosition: {x: 5, y: -243, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1969251456}
