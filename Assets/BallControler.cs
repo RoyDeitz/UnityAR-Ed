@@ -54,7 +54,9 @@ public class BallControler : MonoBehaviour
 
     public Transform cannon;
 
-    //bool isShootable;
+    public Text txtForce;
+    public Text txtAngle;
+
     void Start()
     {
         transform.position = initialPosition.position;
@@ -72,26 +74,9 @@ public class BallControler : MonoBehaviour
         dropdownMaterial.onValueChanged.AddListener(delegate { OnValueChangedHandler(dropdownMaterial);  });
         forceSlider.onValueChanged.AddListener(delegate { OnForceChanged(forceSlider); });
         angleSlider.onValueChanged.AddListener(delegate { OnAngleChanged(angleSlider); });
-       // isShootable = false;
+      
     }
-/*
-    private void FixedUpdate()
-    {
-        if (isShootable)
-        {
-           
-                rb.useGravity = true;
-                btnControlGroup.SetActive(false);
-                forceSlider.enabled = false;
-                angleSlider.enabled = false;
-                shootButton.SetActive(false);
 
-
-            rb.AddForce(0f,0f,900f, ForceMode.Impulse);
-            isShootable = false;
-
-        }
-    }*/
     // Update is called once per frame
     void Update()
     {
@@ -190,11 +175,13 @@ public class BallControler : MonoBehaviour
     public void OnForceChanged(Slider slider) 
     {
         force = slider.value;
+        //txtForce.text = "Force: "+(force/100).ToString()+" N";
     }
 
     public void OnAngleChanged(Slider slider) 
     {
         cannon.localRotation = Quaternion.Euler(-slider.value,cannon.localRotation.y,cannon.localRotation.z);
+        txtAngle.text= "Angle: " + slider.value.ToString() + "°";
     }
 
     public void Shoot() 
