@@ -7,6 +7,8 @@ public class Cannon : MonoBehaviour
     private Animator anim;
 
     public ParticleSystem explosion;
+    public AudioSource expSound;
+    public AudioClip expoClip;
     
 
     public float delay=.6f;
@@ -42,5 +44,6 @@ public class Cannon : MonoBehaviour
         countdown = delay;
         isExploded = true;
         anim.SetTrigger("Shoot");
+        expSound.PlayOneShot(expoClip);
     }
 }
