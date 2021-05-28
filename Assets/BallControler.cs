@@ -94,7 +94,7 @@ public class BallControler : MonoBehaviour
         {
             rb.useGravity = true;
 
-            btnControlGroup.SetActive(true);
+            btnControlGroup.SetActive(false);
             
             forceSlider.enabled = true;
             shootButton.SetActive(false);
@@ -103,8 +103,8 @@ public class BallControler : MonoBehaviour
         {
             rb.useGravity = true;
             btnControlGroup.SetActive(false);
-            forceSlider.enabled = false;
-            angleSlider.enabled = false;
+            forceSlider.enabled = true;
+            angleSlider.enabled = true;
             shootButton.SetActive(false);
 
 
